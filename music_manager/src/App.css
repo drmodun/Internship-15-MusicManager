@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+.album{
+  display: flex;
+  background-color: white;
+  border: 1px #282c32 solid;
+  color: #282c32;
+  border-radius: 10px;
+  transition: color 300ms linear;
+  transition: background-color 300ms linear;
+  transition: border-color 300ms linear;
+  height: 40px;
+  align-items: center;
+  flex-direction: row;
+  width: 1000px;
+  margin-top: 20px ;
+}
+.album:hover{
+  color: white;
+  background-color: #282c32;
+  border-color: #282c32;
+  transition: color 300ms linear;
+  transition: background-color 300ms linear;
+  transition: border-color 300ms linear;
+}
+.album > span{
+  margin-right: 20px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+.outline{
+  border: 10px blue solid;
+}
