@@ -12,6 +12,7 @@ export const App = ()=>{
         setCollection(newCollection);
     }
     return <div>
+        <h1>Music Manager</h1>
         <AlbumsTable albums = {collection}>
 
         </AlbumsTable>

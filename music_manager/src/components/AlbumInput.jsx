@@ -14,14 +14,32 @@ export const AlbumInput = (props) =>{
     const [Author, setAuthor] = React.useState("");
     const [Genre, setGenre] = React.useState("0");
     const [yearOfRelease, setYearOfRelease] = React.useState("");
-    const [dateOfAdd, setDateOfAdd] = React.useState("");
+    const [errorText, setErrorText] = React.useState("");
     function handleSubmit(e){
         e.preventDefault();
-        const newAlbum = new AlbumData(name, Author, Genre, yearOfRelease, new Date(dateOfAdd.valueAsDate));
+        if (name.trim().length===0){
+            setErrorText("Incorrect name")
+            console.log("Incorrect name")
+            return;
+        }
+        if (Author.trim().length===0){
+            setErrorText("Incorrect author")
+            console.log("Incorrect author")
+            return;
+        }
+        if (yearOfRelease.trim().length===0 || isNaN(Number(yearOfRelease))){
+            setErrorText("Incorrect year of release")
+            console.log("Incorrect year of release")
+            return;
+        }
+        const dateOfAdd = new Date();
+        setErrorText("");
+        console.log(dateOfAdd, new Date(dateOfAdd));
+        const newAlbum = new AlbumData(name, Author, Genre, yearOfRelease, dateOfAdd);
         props.handleNewAlbum(newAlbum);
-
     }
     return <div className="album-form-wrapper"><form action="" onSubmit={e=>handleSubmit(e)} className="album-form">
+        <h2> Add Album</h2>
         <label>
             Album Name:
             <input type="text" id="0" placeholder="Album name" value = {name} onChange = {e=>setName(e.target.value)}/>
@@ -47,11 +65,8 @@ export const AlbumInput = (props) =>{
             Year of release:
             <input type="text" placeholder="Yea of Release" value = {yearOfRelease} onChange = {e=>setYearOfRelease(e.target.value)}/>
         </label> 
-        <label>
-           Date of add:
-            <input type="text"  placeholder="Date of addition" value = {dateOfAdd} onChange = {e=>setDateOfAdd(e.target.value)}/>
-        </label>
         <button type = "submit">Submit Album</button>
+        <span className="error-text">{errorText}</span>
     </form>
     </div>
 }

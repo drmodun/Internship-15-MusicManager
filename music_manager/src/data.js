@@ -9,7 +9,6 @@ const genreDictionary = {
     8 : "Other"
 }
 export let increment =localStorage.getItem("albums")===null ? 0 : JSON.parse(localStorage.getItem("albums")).length;
-
 export class AlbumData{
     constructor(name, author, genreId, yearOfRelease, dateOfAdd){
         
@@ -19,7 +18,7 @@ export class AlbumData{
         this.genre = genreDictionary[genreId]
         this.yearOfRelease = yearOfRelease;
         this.dateOfAdd = dateOfAdd;
-        this.id = increment;
+        this.id = increment+1;
         increment+=1;
     }
 }

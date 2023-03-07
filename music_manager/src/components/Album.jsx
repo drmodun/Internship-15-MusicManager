@@ -1,7 +1,6 @@
 const currentDay = new Date()
 // 
 export const Album = (props) =>{
-    console.log("lowkeyGoated", props)
     return <div className={(props.album.dateOfAdd.toLocaleDateString()===currentDay.toLocaleDateString() ? "outline" : "")+" album " }>
     <span>{props.album.id}</span>
     <span>{props.album.name}</span>
