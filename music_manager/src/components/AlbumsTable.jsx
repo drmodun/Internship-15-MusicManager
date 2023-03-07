@@ -10,7 +10,6 @@ export const AlbumsTable = (props) =>{
     }*/
     return <div className = "album-table">
         <div className="default">
-            <span>Id</span>
             <span>Name</span>
             <span>Author</span>
             <span>Genre</span>
@@ -19,7 +18,7 @@ export const AlbumsTable = (props) =>{
         </div>
         {
             props.albums.map(album=>{
-                return <Album album={album}>
+                return <Album album={album} deleteAlbum = {props.deleteAlbum}>
                 </Album>
             })
         }

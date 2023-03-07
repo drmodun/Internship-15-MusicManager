@@ -33,10 +33,10 @@ export const AlbumInput = (props) =>{
             return;
         }
         const dateOfAdd = new Date();
-        setErrorText("");
         console.log(dateOfAdd, new Date(dateOfAdd));
         const newAlbum = new AlbumData(name, Author, Genre, yearOfRelease, dateOfAdd);
-        props.handleNewAlbum(newAlbum);
+        const check = props.handleNewAlbum(newAlbum);
+        setErrorText(!check ? "Album limit (10) has already been reached" : "");
     }
     return <div className="album-form-wrapper"><form action="" onSubmit={e=>handleSubmit(e)} className="album-form">
         <h2> Add Album</h2>
