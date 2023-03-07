@@ -3,11 +3,11 @@ import {Album} from "./Album"
 export const AlbumsTable = (props) =>{
 
     const [albums, setAlbums] = React.useState();
-    function handleAlbumAdd(albumToAdd){
+    /*function handleAlbumAdd(albumToAdd){
         albumToAdd = {...albumToAdd, id : crypto.randomUUID}
         const newAlbums = [...albums, albumToAdd];
         setAlbums(newAlbums);
-    }
+    }*/
     return <div className = "album-table">
         <div className="default">
             <span>Id</span>

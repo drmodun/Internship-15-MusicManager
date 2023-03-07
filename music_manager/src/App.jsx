@@ -1,14 +1,23 @@
-import React from "react";
-import { AlbumData, collection} from "./data";
+import React, { cloneElement, useState } from "react";
+import { AlbumData, collection, collection as defaultCollection, increment} from "./data";
 import { Album} from "./components/Album"
 import { AlbumsTable } from "./components/AlbumsTable";
 import "./App.css"
+import { AlbumInput } from "./components/AlbumInput";
 export const App = ()=>{
     console.log("iosdhfisdfios")
+    const [collection, setCollection] = useState(defaultCollection);
+    function handleNewAlbum(album){
+        const newCollection = [...collection, album];
+        setCollection(newCollection);
+    }
     return <div>
         <AlbumsTable albums = {collection}>
 
         </AlbumsTable>
+        <AlbumInput handleNewAlbum = {handleNewAlbum}>
+
+        </AlbumInput>
     </div>/*<div>
         cvgcvvd
             {collection.map(album =>{
