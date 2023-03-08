@@ -1,4 +1,4 @@
-const genreDictionary = {
+export const genreDictionary = {
     1 : "Metal",
     2 : "Pop",
     3 : "Rock",
