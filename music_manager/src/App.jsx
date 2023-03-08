@@ -1,5 +1,5 @@
 import React, { cloneElement, useState } from "react";
-import { AlbumData, collection as defaultCollection, genreDictionary } from "./data";
+import { AlbumData, collection, collection as defaultCollection, local} from "./data";
 import { Album } from "./components/Album"
 import { AlbumsTable } from "./components/AlbumsTable";
 import "./App.css"
@@ -35,12 +35,14 @@ export const App = () => {
     function handleNewAlbum(album) {
         if (sortedCollectionMutable.length >= 10)
             return false
+        local.setItem("albums", JSON.stringify([...globalCollection, album]));
         setSortedCollection((prev) => [...prev, album].sort((x, y) => reSort(x, y)))
         setGlobalCollection((prev) => [...prev, album].sort((x, y) => reSort(x, y)))
         return true
     }
     function deleteAlbum(id) {
         const newCollection = sortedCollectionMutable.filter(album => album.id !== id);
+        local.setItem("albums", JSON.stringify([...globalCollection.filter(album=>album.id!==id)]));
         setSortedCollection(prev => [...prev.filter(album => album.id !== id)])
         setGlobalCollection(prev => [...prev.filter(album => album.id !== id)])
     }

@@ -22,9 +22,8 @@ export class AlbumData{
         increment+=1;
     }
 }
-export const collection = localStorage.getItem("albums")===null ? 
-[
-    new AlbumData("Bad", "Micahel Jackson", 3, new Date(28,12,2002).getFullYear(), new Date()),
-    new AlbumData("Sample", "Jackson", 4, new Date(28,11,2002).getFullYear(), new Date()),
-    new AlbumData("Test", "Micahel" , 8, new Date(28,10,2002).getFullYear(), new Date()),
-] : localStorage.getItem("albums")
+export const local = window.localStorage;
+export const collection = local.getItem("albums")===null ? [] : JSON.parse(local.getItem("albums"))
+if (collection===[]){
+    local.setItem("albums", JSON.stringify([]));
+}

@@ -1,15 +1,6 @@
 import React from "react"
 import { AlbumData } from "../data";
-/*1 : "Metal",
-    2 : "Pop",
-    3 : "Rock",
-    4 : "Rap",
-    5 : "Techno",
-    6 : "Country",
-    7 : "Classical",
-    8 : "Other"*/
 export const AlbumInput = (props) => {
-    const [form, setForm] = React.useState(1);
     const [name, setName] = React.useState("");
     const [Author, setAuthor] = React.useState("");
     const [Genre, setGenre] = React.useState("1");
