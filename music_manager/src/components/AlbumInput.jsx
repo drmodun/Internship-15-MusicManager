@@ -34,7 +34,7 @@ export const AlbumInput = (props) =>{
         }
         const dateOfAdd = new Date();
         console.log(dateOfAdd, new Date(dateOfAdd));
-        const newAlbum = new AlbumData(name, Author, Genre, yearOfRelease, dateOfAdd);
+        const newAlbum = new AlbumData(name, Author, Number(Genre), yearOfRelease, dateOfAdd);
         const check = props.handleNewAlbum(newAlbum);
         setErrorText(!check ? "Album limit (10) has already been reached" : "");
     }
