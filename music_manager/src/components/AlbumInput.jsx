@@ -8,26 +8,26 @@ import { AlbumData } from "../data";
     6 : "Country",
     7 : "Classical",
     8 : "Other"*/
-export const AlbumInput = (props) =>{
-    const[text, setText] = React.useState("");
+export const AlbumInput = (props) => {
+    const [form, setForm] = React.useState(1);
     const [name, setName] = React.useState("");
     const [Author, setAuthor] = React.useState("");
     const [Genre, setGenre] = React.useState("1");
     const [yearOfRelease, setYearOfRelease] = React.useState("");
     const [errorText, setErrorText] = React.useState("");
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault();
-        if (name.trim().length===0){
+        if (name.trim().length === 0) {
             setErrorText("Incorrect name")
             console.log("Incorrect name")
             return;
         }
-        if (Author.trim().length===0){
+        if (Author.trim().length === 0) {
             setErrorText("Incorrect author")
             console.log("Incorrect author")
             return;
         }
-        if (yearOfRelease.trim().length===0 || isNaN(Number(yearOfRelease))){
+        if (yearOfRelease.trim().length === 0 || isNaN(Number(yearOfRelease))) {
             setErrorText("Incorrect year of release")
             console.log("Incorrect year of release")
             return;
@@ -36,37 +36,39 @@ export const AlbumInput = (props) =>{
         console.log(dateOfAdd, new Date(dateOfAdd));
         const newAlbum = new AlbumData(name, Author, Number(Genre), yearOfRelease, dateOfAdd);
         const check = props.handleNewAlbum(newAlbum);
+        //setForm(prev=>prev+1);
         setErrorText(!check ? "Album limit (10) has already been reached" : "");
     }
-    return <div className="album-form-wrapper"><form action="" onSubmit={e=>handleSubmit(e)} className="album-form">
-        <h2> Add Album</h2>
-        <label>
-            Album Name:
-            <input type="text" id="0" placeholder="Album name" value = {name} onChange = {e=>setName(e.target.value)}/>
-        </label>
-         <label>
-            Author Name:
-            <input type="text" id="1" placeholder="Author name" value = {Author} onChange = {e=>setAuthor(e.target.value)}/>
-        </label> 
-        <label>
-            Genre:
-            <select type="select" placeholder="Genre" value = {Genre} onChange = {e=>setGenre(e.target.value)}>
-                <option value="1">Metal</option>
-                <option value="2">Pop</option>
-                <option value="3">Rock</option>
-                <option value="4">Rap</option>
-                <option value="5">Techno</option>
-                <option value="6">Country</option>
-                <option value="7">Classical</option>
-                <option value="8">Other</option>
+    return <div className="album-form-wrapper">
+        <form  action="" onSubmit={e => handleSubmit(e)} className="album-form">
+            <h2> Add Album</h2>
+            <label>
+                Album Name:
+                <input type="text" id="0" placeholder="Album name" value={name} onChange={e => setName(e.target.value)} />
+            </label>
+            <label>
+                Author Name:
+                <input type="text" id="1" placeholder="Author name" value={Author} onChange={e => setAuthor(e.target.value)} />
+            </label>
+            <label>
+                Genre:
+                <select type="select" placeholder="Genre" value={Genre} onChange={e => setGenre(e.target.value)}>
+                    <option value="1">Metal</option>
+                    <option value="2">Pop</option>
+                    <option value="3">Rock</option>
+                    <option value="4">Rap</option>
+                    <option value="5">Techno</option>
+                    <option value="6">Country</option>
+                    <option value="7">Classical</option>
+                    <option value="8">Other</option>
                 </select>
-        </label> 
-        <label>
-            Year of release:
-            <input type="text" placeholder="Yea of Release" value = {yearOfRelease} onChange = {e=>setYearOfRelease(e.target.value)}/>
-        </label> 
-        <button type = "submit">Submit Album</button>
-        <span className="error-text">{errorText}</span>
-    </form>
+            </label>
+            <label>
+                Year of release:
+                <input type="text" placeholder="Yea of Release" value={yearOfRelease} onChange={e => setYearOfRelease(e.target.value)} />
+            </label>
+            <button type="submit">Submit Album</button>
+            <span className="error-text">{errorText}</span>
+        </form>
     </div>
 }
