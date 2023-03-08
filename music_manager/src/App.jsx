@@ -4,34 +4,65 @@ import { Album} from "./components/Album"
 import { AlbumsTable } from "./components/AlbumsTable";
 import "./App.css"
 import { AlbumInput } from "./components/AlbumInput";
+import { FilterSection } from "./components/filter";
+function reSort(x, y){
+    if (x.yearOfRelease> y.yearOfRelease)
+        return -1;
+    else if(x.yearOfRelease<y.yearOfRelease)
+        return 1;
+    else{
+        if (x.author>y.author)
+            return 1;
+        else if (x.author<y.author)
+            return -1;
+        else{
+            if (x.name > y.name)
+                return 1;
+            else{
+                return -1;
+            }
+        }
+    }}
+const sortedCollection = [...defaultCollection].sort((x, y)=>reSort(x,y))
+
 export const App = ()=>{
     console.log("iosdhfisdfios")
-    const [collection, setCollection] = useState(defaultCollection);
+    const [sortedCollectionMutable, setSortedCollection] = React.useState(sortedCollection);
+    const [globalCollection, setGlobalCollection] = React.useState(sortedCollection);
     function handleNewAlbum(album){
-        if (collection.length>=10)
+        if (sortedCollectionMutable.length>=10)
             return false
-        const newCollection = [...collection, album];
-        setCollection(newCollection);
+        setSortedCollection((prev)=> [...prev, album].sort((x,y)=>reSort(x,y)))
+        setGlobalCollection((prev)=> [...prev, album].sort((x,y)=>reSort(x,y)))
         return true
     }
     function deleteAlbum(id){
-        const newCollection = collection.filter(album=>album.id!=id);
-        setCollection(newCollection);
+        const newCollection = sortedCollectionMutable.filter(album=>album.id!==id);
+        setSortedCollection(prev=>[...prev.filter(album=>album.id!==id)])
+        setGlobalCollection(prev=>[...prev.filter(album=>album.id!==id)])
+    }
+    function filterFunction(value){
+        if (value.trim().length===0){
+            setSortedCollection(globalCollection.sort((x,y)=>reSort(x,y)));
+            return
+        }
+        const filteredCollection = globalCollection.filter(album => album.name.toLowerCase().includes(value.toLowerCase()));
+        setSortedCollection(filteredCollection);
     }
     return <div>
         <h1>Music Manager</h1>
-        <AlbumsTable albums = {collection} deleteAlbum = {deleteAlbum}>
+        <AlbumsTable albums = {sortedCollectionMutable} deleteAlbum = {deleteAlbum}>
 
         </AlbumsTable>
+        <FilterSection filterFunction = {filterFunction}></FilterSection>
         <AlbumInput handleNewAlbum = {handleNewAlbum}>
-
         </AlbumInput>
     </div>/*<div>
         cvgcvvd
             {collection.map(album =>{
                 console.log(album)
                 return<Album  album={album}>
-                </Album>
+                </Album>    
             })}
         </div>*/
 }

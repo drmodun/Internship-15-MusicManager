@@ -12,7 +12,7 @@ export const AlbumInput = (props) =>{
     const[text, setText] = React.useState("");
     const [name, setName] = React.useState("");
     const [Author, setAuthor] = React.useState("");
-    const [Genre, setGenre] = React.useState("0");
+    const [Genre, setGenre] = React.useState("1");
     const [yearOfRelease, setYearOfRelease] = React.useState("");
     const [errorText, setErrorText] = React.useState("");
     function handleSubmit(e){
@@ -50,7 +50,7 @@ export const AlbumInput = (props) =>{
         </label> 
         <label>
             Genre:
-            <select type="select" id="2" placeholder="Genre" value = {Genre} onChange = {e=>setGenre(e.target.value)}>
+            <select type="select" placeholder="Genre" value = {Genre} onChange = {e=>setGenre(e.target.value)}>
                 <option value="1">Metal</option>
                 <option value="2">Pop</option>
                 <option value="3">Rock</option>

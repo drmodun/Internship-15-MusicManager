@@ -5,7 +5,7 @@ export const Album = (props) =>{
         props.deleteAlbum(props.album.id)
     }
     return <div className={(props.album.dateOfAdd.toLocaleDateString()===currentDay.toLocaleDateString() ? "outline" : "")+" album " }>
-    <span>{props.album.name}</span>
+    <p>{props.album.name}</p>
     <span>{props.album.author}</span>
     <span>{props.album.genre}</span>
     <span>{props.album.yearOfRelease}</span>
