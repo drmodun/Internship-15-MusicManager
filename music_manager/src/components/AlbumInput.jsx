@@ -19,8 +19,8 @@ export const AlbumInput = (props) => {
             return;
         }
         if (yearOfRelease.trim().length === 0 || isNaN(Number(yearOfRelease))) {
-            setErrorText(prev => prev.substring(0, 0) + "Incorrect year of release")
-            setYearOfRelease(prev => prev.substring(0, 0) + "")
+            setErrorText("Incorrect year of release")
+            setYearOfRelease("")
             console.log("Incorrect year of release")
             return;
         }
@@ -28,11 +28,11 @@ export const AlbumInput = (props) => {
         console.log(dateOfAdd, new Date(dateOfAdd));
         const newAlbum = new AlbumData(name, Author, Number(Genre), Number(yearOfRelease), dateOfAdd);
         const check = props.handleNewAlbum(newAlbum);
-        setYearOfRelease(prev => prev.substring(0, 0) + "")
-        setName(prev => prev.substring(0, 0) + "")
-        setAuthor(prev => prev.substring(0, 0) + "")
-        setGenre(prev => prev.substring(0, 0) + "1")
-        setErrorText(prev => prev.substring(0, 0) + (!check ? "Album limit (10) has already been reached" : ""));
+        setYearOfRelease("")
+        setName("")
+        setAuthor("")
+        setGenre("1")
+        setErrorText((!check ? "Album limit (10) has already been reached" : ""));
     }
     return <div className="album-form-wrapper">
         <form action="" onSubmit={e => handleSubmit(e)} className="album-form">
