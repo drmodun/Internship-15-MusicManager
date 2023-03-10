@@ -26,11 +26,8 @@ function reSort(x, y) {
 const sortedCollection = [...defaultCollection].sort((x, y) => reSort(x, y))
 
 export const App = () => {
-    console.log("iosdhfisdfios")
     const [sortedCollectionMutable, setSortedCollection] = React.useState(sortedCollection);
     const [globalCollection, setGlobalCollection] = React.useState(sortedCollection);
-    const [filterName, setFilterName] = React.useState("");
-    const [filterGenre, setFilterGenre] = React.useState("");
     function handleNewAlbum(album) {
         if (sortedCollectionMutable.length >= 10)
             return false

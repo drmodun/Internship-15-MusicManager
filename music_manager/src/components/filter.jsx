@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect } from "react"
+import React, { useEffect } from "react"
 
 export const FilterSection = (props) => {
     const [inputFilter, setInputFilter] = React.useState("");
     const [Genre, setGenre] = React.useState("0");
-    const FilterData = useCallback(() => {
-        props.filterFunction(inputFilter, Number(Genre))
-    }, [inputFilter, Genre])
-    useEffect(FilterData, [FilterData, inputFilter, Genre])
+    useEffect(
+        ()=>props.filterFunction(inputFilter, Number(Genre)), 
+    [ inputFilter, Genre])
     return <div className="filter-wrapper">
         <form className="filter-box">
             <h2>Filter</h2>

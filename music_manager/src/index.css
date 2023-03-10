@@ -59,7 +59,7 @@ h1 {
 }
 
 .album:last-child {
-  border: 3px #282c32 solid;
+  border: unset #282c32 solid;
   border-radius: 0px 0px 10px 10px;
 
 }
