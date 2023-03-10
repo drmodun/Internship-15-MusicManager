@@ -1,8 +1,7 @@
-import React, { cloneElement, useState } from "react";
-import { AlbumData, collection, collection as defaultCollection, local} from "./data";
-import { Album } from "./components/Album"
+import React from "react";
+import { collection as defaultCollection, local} from "./data";
 import { AlbumsTable } from "./components/AlbumsTable";
-import "./App.css"
+import "./index.css"
 import { AlbumInput } from "./components/AlbumInput";
 import { FilterSection } from "./components/filter";
 function reSort(x, y) {
@@ -41,7 +40,6 @@ export const App = () => {
         return true
     }
     function deleteAlbum(id) {
-        const newCollection = sortedCollectionMutable.filter(album => album.id !== id);
         local.setItem("albums", JSON.stringify([...globalCollection.filter(album=>album.id!==id)]));
         setSortedCollection(prev => [...prev.filter(album => album.id !== id)])
         setGlobalCollection(prev => [...prev.filter(album => album.id !== id)])
@@ -59,12 +57,5 @@ export const App = () => {
         <FilterSection filterFunction={filterFunction}></FilterSection>
         <AlbumInput handleNewAlbum={handleNewAlbum}>
         </AlbumInput>
-    </div>/*<div>
-        cvgcvvd
-            {collection.map(album =>{
-                console.log(album)
-                return<Album  album={album}>
-                </Album>    
-            })}
-        </div>*/
+    </div>
 }

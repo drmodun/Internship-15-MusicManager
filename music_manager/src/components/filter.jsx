@@ -3,9 +3,9 @@ import React, { useCallback, useEffect } from "react"
 export const FilterSection = (props) => {
     const [inputFilter, setInputFilter] = React.useState("");
     const [Genre, setGenre] = React.useState("0");
-    const FilterData = useCallback(()=>{
+    const FilterData = useCallback(() => {
         props.filterFunction(inputFilter, Number(Genre))
-    },[inputFilter, Genre])
+    }, [inputFilter, Genre])
     useEffect(FilterData, [FilterData, inputFilter, Genre])
     return <div className="filter-wrapper">
         <form className="filter-box">
