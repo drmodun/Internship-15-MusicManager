@@ -18,7 +18,7 @@ export const AlbumInput = (props) => {
             console.log("Incorrect author")
             return;
         }
-        if (yearOfRelease.trim().length === 0 || isNaN(Number(yearOfRelease))) {
+        if (yearOfRelease.trim().length === 0 || isNaN(Number(yearOfRelease)) || Number(yearOfRelease)<1900 || Number(yearOfRelease)>2100) {
             setErrorText("Incorrect year of release")
             setYearOfRelease("")
             console.log("Incorrect year of release")
