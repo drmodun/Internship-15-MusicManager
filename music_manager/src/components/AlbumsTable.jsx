@@ -11,7 +11,7 @@ export const AlbumsTable = (props) => {
         </div>
         {
             props.albums.map(album => {
-                return <Album album={album} deleteAlbum={props.deleteAlbum}>
+                return <Album album={album} deleteAlbum={props.deleteAlbum} key = {album.id}>
                 </Album>
             })
         }

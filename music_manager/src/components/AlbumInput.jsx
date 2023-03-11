@@ -60,7 +60,7 @@ export const AlbumInput = (props) => {
             </label>
             <label>
                 Year of release:
-                <input type="text" placeholder="Yea of Release" value={yearOfRelease} onChange={e => setYearOfRelease(e.target.value)} />
+                <input type="text" placeholder="Year of Release" value={yearOfRelease} onChange={e => setYearOfRelease(e.target.value)} />
             </label>
             <button type="submit">Submit Album</button>
             <span className="error-text">{errorText}</span>

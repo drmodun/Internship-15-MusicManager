@@ -23,7 +23,11 @@ export class AlbumData {
     }
 }
 export const local = window.localStorage;
-export const collection = local.getItem("albums") === null ? [] : JSON.parse(local.getItem("albums"))
-if (collection === []) {
-    local.setItem("albums", JSON.stringify([]));
+export const collection = local.getItem("albums") === null ? [
+    new AlbumData("The Wall", "Pink Floyd", 3, 1979, "2021-01-01"),
+    new AlbumData("The Dark Side of the Moon", "Pink Floyd", 3, 1973, "2022-09-12"),
+    new AlbumData("Wish you were here", "Pink Floyd", 3, 1975, "2023-05-02"),
+] : JSON.parse(local.getItem("albums"))
+if (local.getItem("albums") === null) {
+    local.setItem("albums", JSON.stringify(collection));
 }
